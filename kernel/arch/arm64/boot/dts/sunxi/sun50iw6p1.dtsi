@@ -768,7 +768,11 @@
 			pinctrl-names = "default", "sleep";
 			pinctrl-0 = <&twi0_pins_a>;
 			pinctrl-1 = <&twi0_pins_b>;
-			status = "disabled";
+			status = "okay";
+			qrng: qrng@37{
+				reg = <0x37>;
+				status = "okay";
+			};
 		};
 
 		twi1: twi@0x05002400{

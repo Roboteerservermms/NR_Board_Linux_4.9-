@@ -257,7 +257,7 @@ rx-delay           = 0
 ;----------------------------------------------------------------------------------
 ;i2c configuration
 ;----------------------------------------------------------------------------------
-[twi0]
+[twi0_para]
 twi0_used        = 1
 twi0_scl         = port:PD25<2><default><default><default>
 twi0_sda         = port:PD26<2><default><default><default>
@@ -293,9 +293,9 @@ twi3_sda         = port:PB18<2><default><default><default>
 ;compatible        --- device name
 ;reg               --- device address
 ;----------------------------------------------------------------------------------
-;[twi0/twi_board0]
-;compatible        =
-;reg               =
+[twi0]
+compatible        = "qrng,qrng-i2c"
+reg               = <0x37>
 
 ;----------------------------------------------------------------------------------
 ;uart configuration
