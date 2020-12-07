@@ -56,7 +56,7 @@ do_conffile() {
 	        	cp ${BOARD_FILE}/resize_rootfs.sh $DEST/usr/local/sbin/ -f
 	       	 	cp ${BOARD_FILE}/install_to_emmc $DEST/usr/local/sbin/install_to_emmc -f
 	       	 	cp ${BOARD_FILE}/orangepi"${BOARD}"/sbin/* $DEST/usr/local/sbin/ -f
-	       	 	cp ${BOARD_FILE}/orangepi"${BOARD}"/modules.conf $DEST/etc/modules-load.d/ -f
+	       	 	cp --remove-destination ${BOARD_FILE}/orangepi"${BOARD}"/modules.conf $DEST/etc/modules-load.d/ -f
 			;;
 		"OrangePiH3_mainline" | "OrangePiH6_mainline")
 			cp $BUILD/uboot/u-boot-sunxi-with-spl.bin-${BOARD} $DEST/opt/boot/u-boot-sunxi-with-spl.bin -f
@@ -278,7 +278,7 @@ prepare_rootfs_server()
 
 	case "${DISTRO}" in
 		"xenial" | "bionic")
-			EXTRADEBS="software-properties-common libjpeg8-dev usbmount ubuntu-minimal"
+			EXTRADEBS="sudo net-tools software-properties-common libjpeg8-dev usbmount ubuntu-minimal ssh "
 			;;
 		"sid" | "stretch" | "stable")
 			EXTRADEBS="sudo net-tools g++ libjpeg-dev" 
@@ -295,7 +295,7 @@ export DEBIAN_FRONTEND=noninteractive
 locale-gen en_US.UTF-8
 
 apt-get -y update
-apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq apt-transport-https man subversion imagemagick libv4l-dev cmake bluez $EXTRADEBS
+apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq apt-transport-https man subversion imagemagick libv4l-dev cmake bluez i2c-tools  $EXTRADEBS
 
 apt-get install -f
 apt-get -y remove --purge ureadahead
@@ -369,16 +369,17 @@ EOF
 
 server_setup()
 {
-	case ${BOARD} in  
-		"zero_plus2_h3" | "lite2")
-			;;
-		"*")
+	AISOURCE=$EXTER/common/detectAI
+	cp $AISOURCE/install_AI_environment.sh $DEST/home/orangepi/install_environment.sh
+	cp $AISOURCE/99-edgetpu.rules $DEST/etc/udev/rules.d/99-edgetpu.rules
+	cp $AISOURCE/detect.service $DEST/etc/systemd/system/detect.service
+	cp $AISOURCE/autologin.conf $DEST/home/orangepi/autologin.conf
+	cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
+	mkdir $DEST/etc/network/interfaces.d/
 	cat > "$DEST/etc/network/interfaces.d/eth0" <<EOF
 auto eth0
 iface eth0 inet dhcp
 EOF
-			;;
-	esac
 
 	cat > "$DEST/etc/hostname" <<EOF
 orangepi"${BOARD}"

@@ -262,10 +262,6 @@ twi0_used        = 1
 twi0_scl         = port:PD25<2><default><default><default>
 twi0_sda         = port:PD26<2><default><default><default>
 
-[twi0_suspend]
-twi0_scl         = port:PD25<7><default><default><default>
-twi0_sda         = port:PD26<7><default><default><default>
-
 [twi1]
 twi1_used        = 1
 twi1_scl         = port:PH05<4><default><default><default>
@@ -276,7 +272,7 @@ twi1_scl         = port:PH05<7><default><default><default>
 twi1_sda         = port:PH06<7><default><default><default>
 
 [twi2]
-twi2_used        = 0
+twi2_used        = 1
 twi2_scl         = port:PD23<2><default><default><default>
 twi2_sda         = port:PD24<2><default><default><default>
 
@@ -293,9 +289,9 @@ twi3_sda         = port:PB18<2><default><default><default>
 ;compatible        --- device name
 ;reg               --- device address
 ;----------------------------------------------------------------------------------
-;[twi0/twi_board0]
-;compatible        =
-;reg               =
+;[twi0]
+;compatible        = "qrng,qrng-i2c"
+;reg               = <0x37>
 
 ;----------------------------------------------------------------------------------
 ;uart configuration
@@ -884,11 +880,6 @@ csi0_d4                 = port:PD08<4><default><default><default>
 csi0_d5                 = port:PD09<4><default><default><default>
 csi0_d6                 = port:PD10<4><default><default><default>
 csi0_d7                 = port:PD11<4><default><default><default>
-
-[vind0/csi_cci0]
-csi_cci0_used           = 1
-csi_cci0_sck            = port:PD12<4><default><default><default>
-csi_cci0_sda            = port:PD13<4><default><default><default>
 
 [vind0/flash0]
 flash0_used		= 0
@@ -1693,7 +1684,7 @@ lv8_volt = 820
 ;
 ;----------------------------------------------------------------------------------
 [s_uart0]
-s_uart0_used       = 0
+s_uart0_used       = 1
 s_uart0_tx         = port:PL02<2><default><default><default>
 s_uart0_rx         = port:PL03<2><default><default><default>
 

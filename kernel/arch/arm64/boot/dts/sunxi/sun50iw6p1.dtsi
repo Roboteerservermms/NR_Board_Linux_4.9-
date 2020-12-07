@@ -765,10 +765,10 @@
 			interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
 			clocks = <&clk_twi0>;
 			clock-frequency = <400000>;
-			pinctrl-names = "default", "sleep";
+			pinctrl-names = "default";
 			pinctrl-0 = <&twi0_pins_a>;
-			pinctrl-1 = <&twi0_pins_b>;
-			status = "disabled";
+			status = "okay";
+
 		};
 
 		twi1: twi@0x05002400{
