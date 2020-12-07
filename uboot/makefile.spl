@@ -1,0 +1,29 @@
+include $(SPLDIR)/config.mk
+include $(TOPDIR)/include/autoconf.mk
+include $(TOPDIR)/include/autoconf.mk.dep
+
+MAKEFLAGS +=  --no-print-directory
+include $(SPLDIR)/config.mk
+
+all:
+
+spl boot0:
+		$(MAKE)  -C  $(SPLDIR)/boot0 all
+		@$(TOPDIR)/tools/gen_check_sum $(SPLDIR)/boot0/boot0_sdcard.bin boot0_sdcard_$(CONFIG_SYS_BOARD).bin > /dev/null
+
+depend mkdepend:
+
+#
+# Auto-generate the autoconf.mk file (which is included by all makefiles)
+#
+# This target actually generates 2 files; autoconf.mk and autoconf.mk.dep.
+# the dep file is only include in this top level makefile to determine when
+# to regenerate the autoconf.mk file.
+
+$(SPLDIR)/autoconf.mk: $(obj)include/config.h $(obj)include/configs/$(SOC).h
+	@echo Generating $@ ; \
+    set -e ; \
+    : Extract the config macros ; \
+    $(CPP) $(ALL_CFLAGS) -DDO_DEPS_ONLY -dM $(SRCTREE)/include/common.h > $@.tmp && \
+	sed -n -f $(SRCTREE)/tools/scripts/define2mk.sed $@.tmp > $@; \
+	rm $@.tmp

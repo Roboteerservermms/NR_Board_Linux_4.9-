@@ -1,0 +1,1 @@
+/home/kim/OrangePiH6_Linux4.9/scripts/build.sh
