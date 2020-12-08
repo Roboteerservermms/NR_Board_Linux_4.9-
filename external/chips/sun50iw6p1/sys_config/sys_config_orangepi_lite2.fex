@@ -257,7 +257,7 @@ rx-delay           = 0
 ;----------------------------------------------------------------------------------
 ;i2c configuration
 ;----------------------------------------------------------------------------------
-[twi0]
+[twi0_para]
 twi0_used        = 1
 twi0_scl         = port:PD25<2><default><default><default>
 twi0_sda         = port:PD26<2><default><default><default>
