@@ -28,7 +28,7 @@
 		serial0 = &uart0;
 		serial1 = &uart1;
 		serial2 = &uart2;
-		serial3 = &uart3;
+		serial3 = &s_uart0;
 		twi0 = &twi0;
 		twi1 = &twi1;
 		twi2 = &twi2;
@@ -618,12 +618,14 @@
 			status = "okay";
 		};
 
-		s_uart0: s_uart@7080000 {
+		s_uart0: uart@7080000 {
 			compatible = "allwinner,s_uart";
 			reg = <0x0 0x07080000 0x0 0xd0>;
 			interrupts = <GIC_SPI 106 IRQ_TYPE_LEVEL_HIGH>;
 			pinctrl-names = "default";
 			pinctrl-0 = <&s_uart0_pins_a>;
+			s_uart0_port = <3>;
+			s_uart0_type = <2>;
 			status = "okay";
 		};
 
@@ -739,7 +741,7 @@
 			pinctrl-1 = <&uart2_pins_b>;
 			uart2_port = <2>;
 			uart2_type = <4>;
-			status = "okay";
+			status = "disabled";
 		};
 
 		uart3: uart@05000c00 {
@@ -752,7 +754,7 @@
 			pinctrl-0 = <&uart3_pins_a>;
 			pinctrl-1 = <&uart3_pins_b>;
 			uart3_port = <3>;
-			uart3_type = <4>;
+			uart3_type = <2>;
 			status = "disabled";
 		};
 
@@ -765,10 +767,16 @@
 			interrupts = <GIC_SPI 4 IRQ_TYPE_LEVEL_HIGH>;
 			clocks = <&clk_twi0>;
 			clock-frequency = <400000>;
-			pinctrl-names = "default";
+			pinctrl-names = "default", "sleep";
 			pinctrl-0 = <&twi0_pins_a>;
+			pinctrl-1 = <&twi0_pins_b>;
 			status = "okay";
 
+			qrng: qrng@0x37{
+				compatible = "qrng,qrng-i2c";
+				reg = <0x37>;
+				status = "okay";
+			};
 		};
 
 		twi1: twi@0x05002400{

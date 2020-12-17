@@ -295,7 +295,7 @@ export DEBIAN_FRONTEND=noninteractive
 locale-gen en_US.UTF-8
 
 apt-get -y update
-apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq apt-transport-https man subversion imagemagick libv4l-dev cmake bluez i2c-tools  $EXTRADEBS
+apt-get -y install dosfstools curl xz-utils iw rfkill wireless-tools wpasupplicant openssh-server alsa-utils rsync u-boot-tools vim parted network-manager git autoconf gcc libtool libsysfs-dev pkg-config libdrm-dev xutils-dev hostapd dnsmasq apt-transport-https man subversion imagemagick libv4l-dev cmake bluez i2c-tools cu $EXTRADEBS
 
 apt-get install -f
 apt-get -y remove --purge ureadahead
@@ -374,6 +374,7 @@ server_setup()
 	cp $AISOURCE/99-edgetpu.rules $DEST/etc/udev/rules.d/99-edgetpu.rules
 	cp $AISOURCE/detect.service $DEST/etc/systemd/system/detect.service
 	cp $AISOURCE/autologin.conf $DEST/home/orangepi/autologin.conf
+	cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
 	cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
 	mkdir $DEST/etc/network/interfaces.d/
 	cat > "$DEST/etc/network/interfaces.d/eth0" <<EOF

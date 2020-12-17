@@ -1224,7 +1224,23 @@ static int sw_uart_select_gpio_state(struct pinctrl *pctrl, char *name, u32 no)
 
 static int sw_uart_request_gpio(struct sw_uart_port *sw_uport)
 {
+
+#ifdef SUNXI_S_UART
+	if (sw_uport->id == (SUNXI_UART_NUM - 1)) {
+		/* use name s_uart0 to get pinctrl */
+		snprintf(sw_uport->name, 16, SUNXI_S_UART_DEV_NAME"%d", 0);
+	}
+#endif
+
 	sw_uport->pctrl = devm_pinctrl_get(sw_uport->port.dev);
+
+
+#ifdef SUNXI_S_UART
+	if (sw_uport->id == (SUNXI_UART_NUM - 1)) {
+		snprintf(sw_uport->name, 16, SUNXI_UART_DEV_NAME"%d", sw_uport->id);
+	}
+#endif
+
 
 	if (IS_ERR_OR_NULL(sw_uport->pctrl)) {
 		SERIAL_MSG("UART%d devm_pinctrl_get() failed! return %ld\n", sw_uport->id, PTR_ERR(sw_uport->pctrl));

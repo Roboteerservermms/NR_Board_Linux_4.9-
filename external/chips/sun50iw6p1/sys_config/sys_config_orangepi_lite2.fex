@@ -257,10 +257,11 @@ rx-delay           = 0
 ;----------------------------------------------------------------------------------
 ;i2c configuration
 ;----------------------------------------------------------------------------------
-[twi0_para]
+[twi0]
 twi0_used        = 1
 twi0_scl         = port:PD25<2><default><default><default>
 twi0_sda         = port:PD26<2><default><default><default>
+
 
 [twi1]
 twi1_used        = 1
@@ -272,7 +273,7 @@ twi1_scl         = port:PH05<7><default><default><default>
 twi1_sda         = port:PH06<7><default><default><default>
 
 [twi2]
-twi2_used        = 1
+twi2_used        = 0
 twi2_scl         = port:PD23<2><default><default><default>
 twi2_sda         = port:PD24<2><default><default><default>
 
@@ -341,7 +342,7 @@ uart2_rts        = port:PD21<7><1><default><default>
 uart2_cts        = port:PD22<7><1><default><default>
 
 [uart3]
-uart3_used       = 1
+uart3_used       = 0
 uart3_port       = 3
 uart3_type       = 2
 uart3_tx         = port:PD23<4><1><default><default>
@@ -354,6 +355,7 @@ uart3_tx         = port:PD23<7><1><default><default>
 uart3_rx         = port:PD24<7><1><default><default>
 ;uart3_rts        = port:PD25<7><1><default><default>
 ;uart3_cts        = port:PD26<7><1><default><default>
+
 
 ;----------------------------------------------------------------------------------
 ;SPI controller configuration
@@ -864,10 +866,10 @@ hdmi_mode       = 4
 ;vinc(x)_sensor_list: use sensor list
 ;--------------------------------------------------------------------------------
 [vind0]
-vind0_used		= 1
+vind0_used		= 0
 
 [vind0/csi0]
-csi0_used               = 1
+csi0_used               = 0
 csi0_pck                = port:PD00<4><default><default><default>
 ;csi0_mck                = port:PD01<4><default><default><default>
 csi0_hsync              = port:PD02<4><default><default><default>
@@ -898,7 +900,7 @@ actuator0_afvdd         = ""
 actuator0_afvdd_vol     = 2800000
 
 [vind0/sensor0]
-sensor0_used          = 1
+sensor0_used          = 0
 sensor0_mname         = "gc2035"
 ;sensor0_twi_cci_id    = 0
 sensor0_twi_addr      = 0x78
@@ -940,7 +942,7 @@ sensor1_reset         = port:PD14<1><0><3><0>
 sensor1_pwdn          = port:PD15<1><0><3><1>
 
 [vind0/vinc0]
-vinc0_used		= 1
+vinc0_used		= 0
 vinc0_csi_sel		= 0
 vinc0_mipi_sel		= 0xff
 vinc0_isp_sel		= 0
@@ -1382,9 +1384,9 @@ sndspdif_used   = 0
 ;	sndhdmi_used = 0x1, if register the sound card hdmi. Daudio1 used for HDMI
 ;---------------------------------------------------------------------------------
 [audiohdmi]
-audiohdmi_used	= 1
+audiohdmi_used	= 0
 [sndhdmi]
-sndhdmi_used	= 1
+sndhdmi_used	= 0
 ;---------------------------------------------------------------------------------
 ;allwinner,pcm_lrck_period	: 16/32/64/128/256
 ;allwinner,slot_width_select	: 16bits/20bits/24bits/32bits
@@ -1434,7 +1436,7 @@ daudio0_used 		= 0
 ;	daudio2_used = 0x1, if register the sound card DAUDIO2.
 ;--------------------------------------------------------------------------------
 [snddaudio2]
-snddaudio2_used 	= 0
+snddaudio2_used 	= 1
 ;-----------------------------------------------------------------------------
 [daudio2]
 pcm_lrck_period 	= 0x40
@@ -1471,7 +1473,6 @@ daudio3_used 		= 1
 ;--------------------------------------------------------------------------------
 [ac200_codec]
 ac200_codec_used       = 1
-gpio-spk = port:PL06<1><1><default><default>
 
 ;--------------------------------------------------------------------------------
 ;ir --- infra remote configuration
@@ -1685,6 +1686,8 @@ lv8_volt = 820
 ;----------------------------------------------------------------------------------
 [s_uart0]
 s_uart0_used       = 1
+s_uart0_port       = 3
+s_uart0_type       = 2
 s_uart0_tx         = port:PL02<2><default><default><default>
 s_uart0_rx         = port:PL03<2><default><default><default>
 

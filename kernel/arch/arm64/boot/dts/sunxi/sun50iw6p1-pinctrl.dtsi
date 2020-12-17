@@ -24,6 +24,13 @@
 				allwinner,drive = <1>;
 				allwinner,pull = <1>;
 			};
+			s_uart0_pins_b: s_uart0@1 {
+				allwinner,pins = "PL2", "PL3";
+				allwinner,function = "io_disabled";
+				allwinner,muxsel = <7>;
+				allwinner,drive = <1>;
+				allwinner,pull = <0>;
+			};
 
 			s_twi0_pins_a: s_twi0@0 {
 				allwinner,pins = "PL0", "PL1";

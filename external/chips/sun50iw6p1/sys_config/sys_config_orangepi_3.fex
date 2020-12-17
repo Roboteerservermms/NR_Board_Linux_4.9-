@@ -1394,9 +1394,9 @@ sndspdif_used   = 0
 ;	sndhdmi_used = 0x1, if register the sound card hdmi. Daudio1 used for HDMI
 ;---------------------------------------------------------------------------------
 [audiohdmi]
-audiohdmi_used	= 1
+audiohdmi_used	= 0
 [sndhdmi]
-sndhdmi_used	= 1
+sndhdmi_used	= 0
 ;---------------------------------------------------------------------------------
 ;allwinner,pcm_lrck_period	: 16/32/64/128/256
 ;allwinner,slot_width_select	: 16bits/20bits/24bits/32bits

@@ -9,7 +9,6 @@
 #include "sun50iw6p1.dtsi"
 
 /{
-
 	soc@03000000 {
 		wlan:wlan {
 			compatible = "allwinner,sunxi-wlan";
@@ -33,12 +32,6 @@
 			bt_hostwake = <&r_pio PM 1 6 0 0 0>;
 			status = "okay";
 		};
-		twi0: twi@0x05002000{
-			qrng: qrng@37{
-				compatible="qrng,qrng-i2c";
-				reg = <0x37>;
-			};
-		};
-
 	};
 };
+

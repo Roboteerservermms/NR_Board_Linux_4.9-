@@ -49,19 +49,10 @@ static int data_avail = 0;
 #define CHUNK_SIZE	BURST_PKT_CNT * (PKT_SIZE -2)
 
 
-#define QRNG_DEBUG
-
-#ifdef  QRNG_DEBUG
 #define PINFO(fmt, args...)   pr_info("[QRNG_I] %s(): " fmt, __FUNCTION__, ##args);
 #define PDBG(fmt, args...)   pr_info("[QRNG_D] %s(): " fmt, __FUNCTION__, ##args);
 #define PERR(fmt, args...)   pr_err ("[QRNG_E] %s(): " fmt, __FUNCTION__, ##args);
 #define PLINE                pr_info("[QRNG_D] %s(): %d line\n", __FUNCTION__, __LINE__);
-#else
-#define PINFO(fmt, args...)  pr_info("[QRNG_I] %s(): " fmt, __FUNCTION__, ##args);
-#define PDBG(fmt, args...)   do {} while(0);
-#define PERR(fmt, args...)   pr_info("[QRNG_E] %s(): " fmt, __FUNCTION__, ##args);
-#define PLINE                do {} while(0);
-#endif
 
 
 #define QRNG_PRO_WINSIZE		512
@@ -897,8 +888,6 @@ static struct miscdevice qrng_misc = {
 // ---------------------------------------------------------------------------
 // i2c protocol driver
 // ---------------------------------------------------------------------------
-
-#define PWDN_GPIO_NAME    "pwdn-gpio"
 
 static int qrng_i2c_probe(struct i2c_client *client,
 							const struct i2c_device_id *id)

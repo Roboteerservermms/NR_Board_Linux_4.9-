@@ -1,5 +1,4 @@
-sudo rm -rf /var/lib/dpkg/lock-frontend
-sudo rm -rf /var/lib/dpkg/lock
+sudo rm -rf /var/lib/dpkg/lock*
 sudo apt-get update
 sudo apt-get -y upgrade
 
@@ -29,14 +28,6 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 	--labels models/inat_bird_labels.txt \
 	--input images/parrot.jpg
 
-## startup setting and encrypt shell script
-	cd ~
-	sudo apt-get install -y shc
-	sudo chmod 644 /etc/systemd/system/detect.service
-	sudo chmod -R 775 ~/detection_gpio.sh
-	shc -f detection_gpio.sh
-	sudo rm detection_gpio.sh detection_gpio.sh.x.c
-	sudo mv detection_gpio.sh.x detection_gpio.sh
 	sudo systemctl enable detect.service
 	sudo systemctl start detect.service
 	sudo cp autologin.conf /etc/lightdm/lightdm.conf.d/

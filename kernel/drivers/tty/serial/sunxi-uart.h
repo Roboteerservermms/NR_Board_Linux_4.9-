@@ -244,6 +244,22 @@ struct sw_uart_port {
 #define SUNXI_UART_NUM			1
 #endif
 
+#ifdef CONFIG_ARCH_SUN50IW6
+#define SUNXI_S_UART
+#undef	SUNXI_UART_NUM
+#define SUNXI_UART_NUM			5
+#endif
+
+#ifdef SUNXI_S_UART
+#define SUNXI_S_UART_DEV_NAME		"s_uart"
+#define SUNXI_S_UART_MEM_BASE		SUNXI_R_UART_PBASE
+#define SUNXI_S_UART_MEM_RANGE		0x400
+#define SUNXI_S_UART_MEM_START		(SUNXI_S_UART_MEM_BASE)
+#define SUNXI_S_UART_MEM_END		(SUNXI_S_UART_MEM_START + SUNXI_S_UART_MEM_RANGE - 1)
+#define SUNXI_S_UART_IRQ	    	SUNXI_IRQ_RUART
+#endif
+
+
 /* In 50/39 FPGA, two UART is available, but they share one IRQ.
    So we define the number of UART port as 1. */
 #ifndef CONFIG_EVB_PLATFORM
