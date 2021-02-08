@@ -19,7 +19,7 @@
 
 			s_uart0_pins_a: s_uart0@0 {
 				allwinner,pins = "PL2", "PL3";
-				allwinner,function = "s_uart0";
+				allwinner,function = "s_uart0_tx","s_uart0_rx" ;
 				allwinner,muxsel = <2>;
 				allwinner,drive = <1>;
 				allwinner,pull = <1>;
@@ -134,17 +134,16 @@
 			};
 
 			uart3_pins_a: uart3@0 {
-				allwinner,pins = "PE0", "PE1", "PE2", "PE3";
-				allwinner,pname = "uart3_tx", "uart3_rx",
-						  "uart3_rts", "uart3_cts";
+				allwinner,pins = "PD23", "PD24";
+				allwinner,pname = "uart3_tx", "uart3_rx";
 				allwinner,function = "uart3";
-				allwinner,muxsel = <3>;
+				allwinner,muxsel = <>;
 				allwinner,drive = <1>;
 				allwinner,pull = <1>;
 			};
 
 			uart3_pins_b: uart3@1 {
-				allwinner,pins = "PE0", "PE1", "PE2", "PE3";
+				allwinner,pins = "PD23", "PD24";
 				allwinner,function = "io_disabled";
 				allwinner,muxsel = <7>;
 				allwinner,drive = <1>;
@@ -186,7 +185,7 @@
 			};
 
 			twi2_pins_a: twi2@0 {
-				allwinner,pins = "PD23", "PD24";
+				allwinner,pins = "PE0", "PE1";
 				allwinner,pname = "twi2_scl", "twi2_sda";
 				allwinner,function = "twi2";
 				allwinner,muxsel = <2>;
@@ -195,7 +194,7 @@
 			};
 
 			twi2_pins_b: twi2@1 {
-				allwinner,pins = "PD23", "PD24";
+				allwinner,pins = "PE0", "PE1";
 				allwinner,function = "io_disabled";
 				allwinner,muxsel = <7>;
 				allwinner,drive = <1>;

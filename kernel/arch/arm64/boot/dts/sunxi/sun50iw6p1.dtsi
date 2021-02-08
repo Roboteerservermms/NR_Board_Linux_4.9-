@@ -27,8 +27,8 @@
 	aliases {
 		serial0 = &uart0;
 		serial1 = &uart1;
-		serial2 = &uart2;
-		serial3 = &s_uart0;
+		serial2 = &s_uart0;
+		serial3 = &uart3;
 		twi0 = &twi0;
 		twi1 = &twi1;
 		twi2 = &twi2;
@@ -755,7 +755,7 @@
 			pinctrl-1 = <&uart3_pins_b>;
 			uart3_port = <3>;
 			uart3_type = <2>;
-			status = "disabled";
+			status = "okay";
 		};
 
 		twi0: twi@0x05002000{
@@ -771,7 +771,6 @@
 			pinctrl-0 = <&twi0_pins_a>;
 			pinctrl-1 = <&twi0_pins_b>;
 			status = "okay";
-
 			qrng: qrng@0x37{
 				compatible = "qrng,qrng-i2c";
 				reg = <0x37>;

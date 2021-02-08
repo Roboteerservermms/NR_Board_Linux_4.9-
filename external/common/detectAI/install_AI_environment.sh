@@ -12,7 +12,7 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 
 ## install tensorFlow Lite and run a model
 	sudo apt update
-	sudo apt install python3-pip python3-opencv -y
+	sudo apt install python3-pip python3-opencv python3.7 -y
 	sudo apt install libjpeg8-dev zlib1g-dev libtiff-dev libfreetype6 libfreetype6-dev libwebp-dev libopenjp2-7-dev libopenjp2-7-dev cython python3-numpy python3-pil python3-edgetpu -y
 	pip3 install Cython 
 	pip3 install numpy
@@ -31,4 +31,21 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 	sudo systemctl enable detect.service
 	sudo systemctl start detect.service
 	sudo cp autologin.conf /etc/lightdm/lightdm.conf.d/
+
+	sudo apt-get install llvm-7 -yy
+	sudo ln -s /usr/bin/llvm-config-7 /usr/bin/llvm-config
+	sudo apt-get install build-essential cmake unzip pkg-config gcc-6 g++-6 screen libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libopenblas-dev libatlas-base-dev liblapack-dev gfortran libhdf5-serial-dev python3.7-dev python3.7-tk python-imaging-tk libgtk-3-dev -y
+	sudo python3.7 -m pip install Cython 
+	sudo python3.7 -m pip install numpy
+	sudo python3.7 -m pip install numba==0.44.0
+	sudo python3.7 -m pip install librosa
+	sudo python3.7 -m pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_aarch64.whl
+	sudo apt-get install git
+	sudo ln -s /usr/bin/llvm-config-7 /usr/bin/llvm-config
+
+
+	sudo apt-get install portaudio19-dev python-pyaudio
+	sudo python3.7 -m pip install pyaudio
+	sudo python3.7 -m pip install matplotlib
+	sudo python3.7 -m pip install pandas
 

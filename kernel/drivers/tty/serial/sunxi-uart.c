@@ -2092,6 +2092,7 @@ static const struct dev_pm_ops sw_uart_pm_ops = {
 static const struct of_device_id sunxi_uart_match[] = {
 	{ .compatible = "allwinner,sun8i-uart", },
 	{ .compatible = "allwinner,sun50i-uart", },
+	{ .compatible = "allwinner,s_uart", },
 	{ .compatible = "allwinner,sun3i-uart", },
 	{},
 };

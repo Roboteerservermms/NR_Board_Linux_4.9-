@@ -10,6 +10,9 @@
 
 /{
 	soc@03000000 {
+		twi0: twi@0x05002000{
+			status = "okay";
+		};
 		wlan:wlan {
 			compatible = "allwinner,sunxi-wlan";
 			clocks = <&clk_losc_out>;

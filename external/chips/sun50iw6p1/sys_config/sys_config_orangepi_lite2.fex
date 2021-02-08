@@ -342,19 +342,16 @@ uart2_rts        = port:PD21<7><1><default><default>
 uart2_cts        = port:PD22<7><1><default><default>
 
 [uart3]
-uart3_used       = 0
+uart3_used       = 1
 uart3_port       = 3
 uart3_type       = 2
-uart3_tx         = port:PD23<4><1><default><default>
-uart3_rx         = port:PD24<4><1><default><default>
-;uart3_rts        = port:PD25<4><1><default><default>
-;uart3_cts        = port:PD26<4><1><default><default>
+uart3_tx         = port:PD23<2><1><default><default>
+uart3_rx         = port:PD24<2><1><default><default>
 
 [uart3_suspend]
-uart3_tx         = port:PD23<7><1><default><default>
-uart3_rx         = port:PD24<7><1><default><default>
-;uart3_rts        = port:PD25<7><1><default><default>
-;uart3_cts        = port:PD26<7><1><default><default>
+uart3_tx         = port:PD23<2><1><default><default>
+uart3_rx         = port:PD24<2><1><default><default>
+
 
 
 ;----------------------------------------------------------------------------------
