@@ -548,7 +548,7 @@ disp_init_enable         = 1
 disp_mode                = 0
 
 screen0_output_type      = 3
-screen0_output_mode      = 10
+screen0_output_mode      = 4
 
 screen0_output_format    = 1
 screen0_output_bits      = 0
@@ -1433,7 +1433,7 @@ daudio0_used 		= 0
 ;	daudio2_used = 0x1, if register the sound card DAUDIO2.
 ;--------------------------------------------------------------------------------
 [snddaudio2]
-snddaudio2_used 	= 1
+snddaudio2_used 	= 0
 ;-----------------------------------------------------------------------------
 [daudio2]
 pcm_lrck_period 	= 0x40
@@ -1444,7 +1444,7 @@ signal_inversion 	= 0x03
 frametype 		= 0x00
 tdm_config 		= 0x01
 mclk_div 		= 0x01
-daudio2_used 		= 1
+daudio2_used 		= 0
 
 ;--------------------------------------------------------------------------------
 ;		NOTE :Make sure snddaudio3_used = 0x1,
@@ -1457,6 +1457,7 @@ snddaudio3_used 	= 1
 pcm_lrck_period 	= 0x20
 slot_width_select 	= 0x20
 daudio_master 		= 0x04
+daudio_regulator        = "vcc-audio-33"
 audio_format 		= 0x01
 signal_inversion 	= 0x01
 frametype 		= 0x00

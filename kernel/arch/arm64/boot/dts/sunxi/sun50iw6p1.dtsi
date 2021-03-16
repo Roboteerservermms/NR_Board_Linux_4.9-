@@ -924,7 +924,7 @@
 
 		ac200_codec: ac200_codec {
 			compatible = "allwinner,ac200_codec";
-			status = "disabled";
+			status = "okay";
 		};
 
 		daudio0:daudio@0x05090000 {
@@ -988,7 +988,7 @@
 			frametype = <0x00>;
 			tdm_num = <0x3>;
 			mclk_div = <0x0>;
-			status = "disabled";
+			status = "okay";
 		};
 
 		spdif:spdif-controller@0x05093000{
