@@ -2,7 +2,7 @@
 Description=Detection_gpio.sh
 [Service]
 Type=forking
-ExecStart=/bin/bash -c "/home/orangepi/detection_gpio.sh"
+ExecStart=/bin/bash -c "/home/orangepi/detectAI/detection_gpio.sh"
 Environment=XAUTHORITY=/home/orangepi/.Xauthority
 Environment=DISPLAY=:0.0
 Restart=always

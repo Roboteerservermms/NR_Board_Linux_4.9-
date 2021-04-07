@@ -27,25 +27,7 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 	--model models/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite \
 	--labels models/inat_bird_labels.txt \
 	--input images/parrot.jpg
-
+	git clone https://github.com/Roboteerservermms/detectAI.git
 	sudo systemctl enable detect.service
 	sudo systemctl start detect.service
 	sudo cp autologin.conf /etc/lightdm/lightdm.conf.d/
-
-	sudo apt-get install llvm-7 -yy
-	sudo ln -s /usr/bin/llvm-config-7 /usr/bin/llvm-config
-	sudo apt-get install build-essential cmake unzip pkg-config gcc-6 g++-6 screen libxmu-dev libxi-dev libglu1-mesa libglu1-mesa-dev libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libopenblas-dev libatlas-base-dev liblapack-dev gfortran libhdf5-serial-dev python3.7-dev python3.7-tk python-imaging-tk libgtk-3-dev -y
-	sudo python3.7 -m pip install Cython 
-	sudo python3.7 -m pip install numpy
-	sudo python3.7 -m pip install numba==0.44.0
-	sudo python3.7 -m pip install librosa
-	sudo python3.7 -m pip install https://github.com/lhelontra/tensorflow-on-arm/releases/download/v2.4.0/tensorflow-2.4.0-cp37-none-linux_aarch64.whl
-	sudo apt-get install git
-	sudo ln -s /usr/bin/llvm-config-7 /usr/bin/llvm-config
-
-
-	sudo apt-get install portaudio19-dev python-pyaudio
-	sudo python3.7 -m pip install pyaudio
-	sudo python3.7 -m pip install matplotlib
-	sudo python3.7 -m pip install pandas
-
