@@ -9,7 +9,7 @@ deboostrap_rootfs() {
 	cd $TEMP && pwd
 
 	# this is updated very seldom, so is ok to hardcode
-	debian_archive_keyring_deb="${SOURCES}/pool/main/d/debian-archive-keyring/debian-archive-keyring_2019.1_all.deb"
+	debian_archive_keyring_deb="http://ftp.debian.org/debian/pool/main/d/debian-archive-keyring/debian-archive-keyring_2019.1+deb10u1_all.deb"
 	wget -O keyring.deb "$debian_archive_keyring_deb"
 	ar -x keyring.deb && rm -f control.tar.gz debian-binary && rm -f keyring.deb
 	DATA=$(ls data.tar.*) && compress=${DATA#data.tar.}
@@ -222,7 +222,7 @@ prepare_env()
 					;;
 			esac
 			;;
-		stretch)
+		buster)
 			ROOTFS="${DISTRO}-base-${ARCH}.tar.gz"
 			METHOD="debootstrap"
 			case $SOURCES in
@@ -280,7 +280,7 @@ prepare_rootfs_server()
 		"xenial" | "bionic")
 			EXTRADEBS="sudo net-tools software-properties-common libjpeg8-dev usbmount ubuntu-minimal ssh "
 			;;
-		"sid" | "stretch" | "stable")
+		"sid" | "buster" | "stable")
 			EXTRADEBS="sudo net-tools g++ libjpeg-dev" 
 			;;
 		"*")	
@@ -374,9 +374,12 @@ server_setup()
 	cp $AISOURCE/99-edgetpu.rules $DEST/etc/udev/rules.d/99-edgetpu.rules
 	cp $AISOURCE/detect.service $DEST/etc/systemd/system/detect.service
 	cp $AISOURCE/autologin.conf $DEST/home/orangepi/autologin.conf
-	cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
-	cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
-	mkdir $DEST/etc/network/interfaces.d/
+	case "${DISTRO}" in
+		"bionic")
+			cp $AISOURCE/bionic.yaml $DEST/etc/netplan/eth0.yaml
+			;;
+    esac
+	cp $AISOURCE/gitupdate.sh $DEST/home/orangepi/gitupdate.sh
 	cat > "$DEST/etc/network/interfaces.d/eth0" <<EOF
 auto eth0
 iface eth0 inet dhcp

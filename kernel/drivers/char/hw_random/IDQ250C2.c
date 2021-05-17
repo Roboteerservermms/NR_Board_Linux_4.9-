@@ -1033,13 +1033,11 @@ static const struct i2c_device_id qrng_i2c_id[] = {
 
 MODULE_DEVICE_TABLE(i2c, qrng_i2c_id);
 
-#ifdef CONFIG_OF
 static const struct of_device_id qrng_of_table[] = {
  {.compatible = "qrng,qrng-i2c"},
  {},
 };
 MODULE_DEVICE_TABLE(of, qrng_of_table);
-#endif
 
 static struct i2c_driver qrng_i2c_driver = {
 	.driver 	= {

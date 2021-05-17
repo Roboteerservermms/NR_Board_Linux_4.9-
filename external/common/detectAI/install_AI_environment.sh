@@ -8,7 +8,7 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 
 	sudo apt-get update
 	sudo apt-get install libedgetpu1-std -y
-	sudo apt-get install --no-install-recommends xubuntu-desktop -y
+	sudo apt-get install xubuntu-desktop -y
 
 ## install tensorFlow Lite and run a model
 	sudo apt update
@@ -19,7 +19,7 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 	pip3 install Pillow --global-option="build_ext" --global-option="--enable-zlib" --global-option="--enable-jpeg" --global-option="--enable-tiff" --global-option="--enable-freetype" --global-option="--enable-webp" --global-option="--enable-webpmux" --global-option="--enable-jpeg2000"
 	sudo apt-get install git
 	pip3 install https://dl.google.com/coral/python/tflite_runtime-2.1.0.post1-cp36-cp36m-linux_aarch64.whl
-	cd ~
+	cd /home/orangepi/
 	git clone https://github.com/google-coral/tflite.git
 	cd tflite/python/examples/classification
 	bash install_requirements.sh
@@ -27,6 +27,8 @@ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sud
 	--model models/mobilenet_v2_1.0_224_inat_bird_quant_edgetpu.tflite \
 	--labels models/inat_bird_labels.txt \
 	--input images/parrot.jpg
+	cd /home/orangepi/
+	rm -rf tflite/
 	git clone https://github.com/Roboteerservermms/detectAI.git
 	sudo systemctl enable detect.service
 	sudo systemctl start detect.service

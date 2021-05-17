@@ -80,7 +80,7 @@ struct regulator *regu;
 #ifndef CONFIG_OF
 #define SUNXI_IRQ_VE		(90)
 #endif
-
+#define CEDAR_DEBUG
 /* #define CEDAR_DEBUG */
 #define cedar_ve_printk(level, msg...) printk(level "cedar_ve: " msg)
 
